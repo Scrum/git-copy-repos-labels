@@ -69,7 +69,7 @@ Description: *You  Github Personal Token. Grab it from your [Developer settings]
 
 #### `strategy`
 
-Type: `String<post|put|patch>`  
+Type: `String<post|put>`  
 Default: `post`  
 Description: *Behavior strategy for merging, deleting or updating labels*
   - `post` - *Delete all labels from the repository and create from the remote repository*
