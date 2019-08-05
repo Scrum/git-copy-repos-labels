@@ -1,0 +1,41 @@
+{
+  "name": "git-copy-repos-labels",
+  "version": "0.0.0",
+  "description": "A iny helper to copy a list of labels from the github repository ",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "nyc ava",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "github",
+    "labels"
+  ],
+  "author": "scrum",
+  "license": "MIT",
+  "dependencies": {
+    "git-create-repos-labels": "0.0.2",
+    "git-del-repos-labels": "0.1.0",
+    "git-get-repos-labels": "0.0.4",
+    "git-update-repos-labels": "0.0.1"
+  },
+  "devDependencies": {
+    "ava": "^2.2.0",
+    "coveralls": "^3.0.5",
+    "nyc": "^14.1.1",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3"
+  },
+  "ava": {
+    "babel": false,
+    "compileEnhancements": false,
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
+  }
+}
