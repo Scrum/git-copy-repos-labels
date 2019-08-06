@@ -10,19 +10,17 @@ const gitCopyReposLabels = async ({from, to, token, strategy = 'post'}: options)
   const labelsTo = await gitGetReposLabels({owner: to.owner, repo: to.repo, token});
 
   if (strategy === 'post') {
-    labelsTo.forEach(async (label: label): Promise<object> => await gitDelReposLabels({
+    return Promise.all(labelsTo.map((label: label): Promise<object> => gitDelReposLabels({
       label,
       owner: to.owner, 
       repo: to.repo, 
       token
-    }));
-    
-    return labelsFrom.map(async (label: label): Promise<object> => {
+    }))).then(() => labelsFrom.map(async (label: label): Promise<object> => {
       return await gitCreateReposLabels({label, owner: to.owner, repo: to.repo, token});
-    });
+    }));
   }
-
-  labelsFrom.map((label: label): Promise<object> => {
+  
+  return labelsFrom.map((label: label): Promise<object> => {
     const method = labelsTo.includes(({name}) => label.name === name) ? gitUpdateReposLabels : gitCreateReposLabels;
     return method({label, owner: to.owner, repo: to.repo, token});
   });
