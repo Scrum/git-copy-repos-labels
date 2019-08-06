@@ -39,6 +39,7 @@ exports.__esModule = true;
 var git_get_repos_labels_1 = require("git-get-repos-labels");
 var git_del_repos_labels_1 = require("git-del-repos-labels");
 var git_create_repos_labels_1 = require("git-create-repos-labels");
+var git_update_repos_labels_1 = require("git-update-repos-labels");
 var gitCopyReposLabels = function (_a) {
     var from = _a.from, to = _a.to, token = _a.token, _b = _a.strategy, strategy = _b === void 0 ? 'post' : _b;
     return __awaiter(_this, void 0, void 0, function () {
@@ -67,7 +68,13 @@ var gitCopyReposLabels = function (_a) {
                                 });
                             }); }); })];
                     }
-                    return [2 /*return*/];
+                    return [2 /*return*/, labelsFrom.map(function (label) {
+                            var method = labelsTo.includes(function (_a) {
+                                var name = _a.name;
+                                return label.name === name;
+                            }) ? git_update_repos_labels_1["default"] : git_create_repos_labels_1["default"];
+                            return method({ label: label, owner: to.owner, repo: to.repo, token: token });
+                        })];
             }
         });
     });
