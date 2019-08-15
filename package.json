@@ -16,14 +16,15 @@
   "author": "scrum",
   "license": "MIT",
   "dependencies": {
-    "git-create-repos-labels": "0.0.2",
-    "git-del-repos-labels": "0.1.0",
-    "git-get-repos-labels": "0.0.4",
-    "git-update-repos-labels": "0.0.1"
+    "git-create-repos-labels": "^0.1.1",
+    "git-del-repos-labels": "^0.2.0",
+    "git-get-repos-id": "0.0.0",
+    "git-get-repos-labels": "0.0.5",
+    "git-update-repos-labels": "^0.1.0"
   },
   "devDependencies": {
     "ava": "^2.2.0",
-    "coveralls": "^3.0.5",
+    "coveralls": "^3.0.6",
     "nyc": "^14.1.1",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.3"
