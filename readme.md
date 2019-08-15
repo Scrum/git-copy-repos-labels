@@ -76,6 +76,7 @@ Description: *Behavior strategy for merging, deleting or updating labels*
   - `put` - *Full replacement of the label when it matches*
 
 ## Related
+ - [git-get-repos-id](https://github.com/Scrum/git-get-repos-id) - A tiny helper to get github repository `id` 
  - [git-get-repos-labels](https://github.com/Scrum/git-get-repos-labels) - A iny helper to get a list of labels from the github repository
  - [git-del-repos-labels](https://github.com/Scrum/git-del-repos-labels) - A iny helper to del a list of labels from the github repository
  - [git-create-repos-labels](https://github.com/Scrum/git-create-repos-labels) - A tiny helper to create of label in the github repository 
