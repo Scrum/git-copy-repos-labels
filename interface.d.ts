@@ -13,6 +13,7 @@ export interface to {
     repo: string;
 }
 export interface label {
+    id: string;
     name: string;
     color: string;
     description: string;

@@ -36,6 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 var _this = this;
 exports.__esModule = true;
+var git_get_repos_id_1 = require("git-get-repos-id");
 var git_get_repos_labels_1 = require("git-get-repos-labels");
 var git_del_repos_labels_1 = require("git-del-repos-labels");
 var git_create_repos_labels_1 = require("git-create-repos-labels");
@@ -43,7 +44,7 @@ var git_update_repos_labels_1 = require("git-update-repos-labels");
 var gitCopyReposLabels = function (_a) {
     var from = _a.from, to = _a.to, token = _a.token, _b = _a.strategy, strategy = _b === void 0 ? 'post' : _b;
     return __awaiter(_this, void 0, void 0, function () {
-        var labelsFrom, labelsTo;
+        var labelsFrom, labelsTo, repoId;
         var _this = this;
         return __generator(this, function (_c) {
             switch (_c.label) {
@@ -53,27 +54,29 @@ var gitCopyReposLabels = function (_a) {
                     return [4 /*yield*/, git_get_repos_labels_1["default"]({ owner: to.owner, repo: to.repo, token: token })];
                 case 2:
                     labelsTo = _c.sent();
+                    return [4 /*yield*/, git_get_repos_id_1["default"]({ owner: to.owner, repo: to.repo, token: token })];
+                case 3:
+                    repoId = _c.sent();
                     if (strategy === 'post') {
                         return [2 /*return*/, Promise.all(labelsTo.map(function (label) { return git_del_repos_labels_1["default"]({
                                 label: label,
-                                owner: to.owner,
-                                repo: to.repo,
                                 token: token
                             }); })).then(function () { return labelsFrom.map(function (label) { return __awaiter(_this, void 0, void 0, function () {
                                 return __generator(this, function (_a) {
                                     switch (_a.label) {
-                                        case 0: return [4 /*yield*/, git_create_repos_labels_1["default"]({ label: label, owner: to.owner, repo: to.repo, token: token })];
+                                        case 0: return [4 /*yield*/, git_create_repos_labels_1["default"]({ label: label, repoId: repoId, token: token })];
                                         case 1: return [2 /*return*/, _a.sent()];
                                     }
                                 });
                             }); }); })];
                     }
                     return [2 /*return*/, labelsFrom.map(function (label) {
-                            var method = labelsTo.includes(function (_a) {
-                                var name = _a.name;
-                                return label.name === name;
-                            }) ? git_update_repos_labels_1["default"] : git_create_repos_labels_1["default"];
-                            return method({ label: label, owner: to.owner, repo: to.repo, token: token });
+                            return labelsTo.includes(function (_a) {
+                                var id = _a.id;
+                                return label.id === id;
+                            })
+                                ? git_update_repos_labels_1["default"]({ label: label, token: token })
+                                : git_create_repos_labels_1["default"]({ label: label, repoId: repoId, token: token });
                         })];
             }
         });

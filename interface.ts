@@ -16,6 +16,7 @@ export interface to {
 }
 
 export interface label {
+  id: string,
   name: string;
   color: string;
   description: string;
