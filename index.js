@@ -71,11 +71,12 @@ var gitCopyReposLabels = function (_a) {
                             }); }); })];
                     }
                     return [2 /*return*/, labelsFrom.map(function (label) {
-                            return labelsTo.includes(function (_a) {
-                                var id = _a.id;
-                                return label.id === id;
-                            })
-                                ? git_update_repos_labels_1["default"]({ label: label, token: token })
+                            var labelTo = labelsTo.find(function (_a) {
+                                var name = _a.name;
+                                return name.includes(label.name);
+                            });
+                            return labelTo
+                                ? git_update_repos_labels_1["default"]({ label: Object.assign(label, { id: labelTo.id }), token: token })
                                 : git_create_repos_labels_1["default"]({ label: label, repoId: repoId, token: token });
                         })];
             }
