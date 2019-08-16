@@ -20,8 +20,10 @@ const gitCopyReposLabels = async ({from, to, token, strategy = 'post'}: options)
   }
   
   return labelsFrom.map((label: label): Promise<object> => {
-    return labelsTo.includes(({id}) => label.id === id) 
-      ? gitUpdateReposLabels({label, token}) 
+    const labelTo = labelsTo.find(({name}) => name.includes(label.name))
+    
+    return  labelTo
+      ? gitUpdateReposLabels({label: Object.assign(label, {id: labelTo.id}), token}) 
       : gitCreateReposLabels({label, repoId, token});
   });
 };

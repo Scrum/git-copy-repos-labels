@@ -73,7 +73,7 @@ Type: `String<post|put>`
 Default: `post`  
 Description: *Behavior strategy for merging, deleting or updating labels*
   - `post` - *Delete all labels from the repository and create from the remote repository*
-  - `put` - *Full replacement of the label when it matches*
+  - `put` - *Full update of the label when it name matches*
 
 ## Related
  - [git-get-repos-id](https://github.com/Scrum/git-get-repos-id) - A tiny helper to get github repository `id` 
@@ -81,3 +81,6 @@ Description: *Behavior strategy for merging, deleting or updating labels*
  - [git-del-repos-labels](https://github.com/Scrum/git-del-repos-labels) - A iny helper to del a list of labels from the github repository
  - [git-create-repos-labels](https://github.com/Scrum/git-create-repos-labels) - A tiny helper to create of label in the github repository 
  - [git-update-repos-labels](https://github.com/Scrum/git-update-repos-labels) - A tiny helper to update of label in the github repository 
+
+ ## Recommend
+  - [git-template-labels](https://github.com/Scrum/git-template-labels) - Repository with a set of commonly used labels
