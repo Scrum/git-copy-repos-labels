@@ -1,6 +1,6 @@
 {
   "name": "git-copy-repos-labels",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A iny helper to copy a list of labels from the github repository ",
   "main": "index.js",
   "scripts": {

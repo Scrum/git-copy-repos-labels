@@ -73,7 +73,7 @@ var gitCopyReposLabels = function (_a) {
                     return [2 /*return*/, labelsFrom.map(function (label) {
                             var labelTo = labelsTo.find(function (_a) {
                                 var name = _a.name;
-                                return name.includes(label.name);
+                                return label.name.includes(name);
                             });
                             return labelTo
                                 ? git_update_repos_labels_1["default"]({ label: Object.assign(label, { id: labelTo.id }), token: token })
