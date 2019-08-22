@@ -20,7 +20,7 @@ const gitCopyReposLabels = async ({from, to, token, strategy = 'post'}: options)
   }
   
   return labelsFrom.map((label: label): Promise<object> => {
-    const labelTo = labelsTo.find(({name}) => name.includes(label.name))
+    const labelTo = labelsTo.find(({name}) => label.name.includes(name));
     
     return  labelTo
       ? gitUpdateReposLabels({label: Object.assign(label, {id: labelTo.id}), token}) 
