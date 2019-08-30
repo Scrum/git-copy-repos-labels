@@ -84,3 +84,4 @@ Description: *Behavior strategy for merging, deleting or updating labels*
 
  ## Recommend
   - [git-template-labels](https://github.com/Scrum/git-template-labels) - Repository with a set of commonly used labels
+  - [git-copy-repos-labels-cli](https://github.com/Scrum/git-copy-repos-labels-cli) - CLI for git-copy-repos-labels
