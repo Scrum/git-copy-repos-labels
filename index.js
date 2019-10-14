@@ -1,9 +1,10 @@
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -34,7 +35,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var _this = this;
 exports.__esModule = true;
 var git_get_repos_id_1 = require("git-get-repos-id");
 var git_get_repos_labels_1 = require("git-get-repos-labels");
@@ -43,9 +43,8 @@ var git_create_repos_labels_1 = require("git-create-repos-labels");
 var git_update_repos_labels_1 = require("git-update-repos-labels");
 var gitCopyReposLabels = function (_a) {
     var from = _a.from, to = _a.to, token = _a.token, _b = _a.strategy, strategy = _b === void 0 ? 'post' : _b;
-    return __awaiter(_this, void 0, void 0, function () {
+    return __awaiter(void 0, void 0, void 0, function () {
         var labelsFrom, labelsTo, repoId;
-        var _this = this;
         return __generator(this, function (_c) {
             switch (_c.label) {
                 case 0: return [4 /*yield*/, git_get_repos_labels_1["default"]({ owner: from.owner, repo: from.repo, token: token })];
@@ -61,7 +60,7 @@ var gitCopyReposLabels = function (_a) {
                         return [2 /*return*/, Promise.all(labelsTo.map(function (label) { return git_del_repos_labels_1["default"]({
                                 label: label,
                                 token: token
-                            }); })).then(function () { return labelsFrom.map(function (label) { return __awaiter(_this, void 0, void 0, function () {
+                            }); })).then(function () { return labelsFrom.map(function (label) { return __awaiter(void 0, void 0, void 0, function () {
                                 return __generator(this, function (_a) {
                                     switch (_a.label) {
                                         case 0: return [4 /*yield*/, git_create_repos_labels_1["default"]({ label: label, repoId: repoId, token: token })];
