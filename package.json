@@ -16,6 +16,7 @@
   "author": "scrum",
   "license": "MIT",
   "dependencies": {
+    "@scrum/git-update-repos-labels": "^0.1.3",
     "git-create-repos-labels": "^0.1.1",
     "git-del-repos-labels": "^0.2.0",
     "git-get-repos-id": "0.0.0",
